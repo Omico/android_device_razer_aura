@@ -1,9 +1,0 @@
-sf.lcd_current_density              u:object_r:sf_lcd_current_density_prop:s0
-
-persist.nfc.hci_network_reset_req   u:object_r:nfc_nq_prop:s0
-
-sys.vendor.thermal.                 u:object_r:thermal_prop:s0
-
-debug.gr.fps_stats                  u:object_r:rzr_fps_prop:s0
-debug.gr.curr_frame_ptr             u:object_r:rzr_fps_prop:s0
-sys.bootanim.shutdown               u:object_r:rzr_bootanim_prop:s0

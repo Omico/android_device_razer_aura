@@ -57,20 +57,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
 
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    system \
-    vendor \
-    vbmeta
-
 # Security patch level
 PLATFORM_SECURITY_PATCH := 2099-12-31
-
-# SELinux
-include device/qcom/sepolicy/sepolicy.mk
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -80,12 +68,13 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := device/oneplus/fajita/recovery.wipe
-TARGET_RECOVERY_FSTAB := device/oneplus/fajita/recovery.fstab
+TARGET_RECOVERY_WIPE := device/razer/aura/recovery.wipe
+TARGET_RECOVERY_FSTAB := device/razer/aura/recovery.fstab
 
 # TWRP
 RECOVERY_VARIANT := twrp
 
+TARGET_RECOVERY_QCOM_RTC_FIX := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_DEVICE_MODULES += android.hardware.boot@1.0
@@ -108,7 +97,7 @@ RECOVERY_INSTALLER_PATH := device/razer/aura/installer
 
 # Encryption
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
+TARGET_HW_DISK_ENCRYPTION := true
 
 # Add logcat support
 TWRP_INCLUDE_LOGCAT := true

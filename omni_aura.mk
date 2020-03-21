@@ -4,6 +4,9 @@ $(call inherit-product, build/target/product/embedded.mk)
 # Inherit some common omni stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
 
+# Inherit from aura device
+$(call inherit-product, device/razer/aura/device.mk)
+
 PRODUCT_NAME := omni_aura
 PRODUCT_BRAND := razer
 PRODUCT_DEVICE := aura
@@ -15,3 +18,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="aura-user 9 P-MR1-RC003-RZR-190305 3110 release-keys"
 
 BUILD_FINGERPRINT := razer/cheryl2/aura:9/P-MR1-RC003-RZR-190305/3110:user/release-keys
+
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
