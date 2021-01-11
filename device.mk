@@ -1,5 +1,9 @@
 LOCAL_PATH := device/razer/aura
 
+# tzdata
+PRODUCT_PACKAGES += \
+    tzdata_twrp \
+
 # A/B
 AB_OTA_UPDATER := true
 
