@@ -93,7 +93,7 @@ TW_NO_LEGACY_PROPS := true
 TW_INCLUDE_REPACKTOOLS := true
 
 USE_RECOVERY_INSTALLER := true
-RECOVERY_INSTALLER_PATH := device/razer/aura/installer
+RECOVERY_INSTALLER_PATH := bootable/recovery/installer
 
 # Encryption
 TW_INCLUDE_CRYPTO := true
