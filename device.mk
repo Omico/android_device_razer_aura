@@ -27,14 +27,14 @@ PRODUCT_PACKAGES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
-    bootctrl.sdm845
+    bootctrl.$(PRODUCT_PLATFORM)
 
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm845 \
+    bootctrl.$(PRODUCT_PLATFORM) \
     libcutils \
     libgptutils \
     libz

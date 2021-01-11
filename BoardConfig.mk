@@ -1,7 +1,10 @@
+# Default device path
+LOCAL_PATH := device/$(PRODUCT_BRAND)/$(TARGET_DEVICE)
+
 # Platform
 TARGET_BOARD_PLATFORM := sdm845
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
-QCOM_BOARD_PLATFORMS += sdm845
+QCOM_BOARD_PLATFORMS += $(TARGET_BOARD_PLATFORM)
 
 # Architecture
 TARGET_ARCH := arm64
@@ -40,7 +43,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_PREBUILT_KERNEL := device/razer/aura/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -68,8 +71,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := device/razer/aura/recovery.wipe
-TARGET_RECOVERY_FSTAB := device/razer/aura/recovery.fstab
+TARGET_RECOVERY_WIPE := $(LOCAL_PATH)/recovery.wipe
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
 
 # TWRP
 RECOVERY_VARIANT := twrp
