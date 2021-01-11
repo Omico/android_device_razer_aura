@@ -43,7 +43,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -58,7 +58,6 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 TARGET_COPY_OUT_VENDOR := vendor
 
 # QCOM
-BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
 
 # Security patch level
@@ -81,7 +80,24 @@ RECOVERY_VARIANT := twrp
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_DEVICE_MODULES += android.hardware.boot@1.0
+
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.boot@1.0-service \
+    android.hidl.base@1.0 \
+    bootctrl.$(TARGET_BOARD_PLATFORM) \
+    libicuuc \
+    libion \
+    libprocinfo \
+    libxml2
+
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.base@1.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libicuuc.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libprocinfo.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
+    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/android.hardware.boot@1.0-service
+
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/wled/brightness"
 TW_MAX_BRIGHTNESS := 1023
@@ -99,13 +115,15 @@ TW_INCLUDE_REPACKTOOLS := true
 USE_RECOVERY_INSTALLER := true
 RECOVERY_INSTALLER_PATH := bootable/recovery/installer
 
+# Boot control
+USE_COMMON_BOOTCTRL := true
+USE_COMMON_GPTUTILS := true
+
 # Encryption
 TW_INCLUDE_CRYPTO := true
 TARGET_HW_DISK_ENCRYPTION := true
+BOARD_USES_QCOM_FBE_DECRYPTION := true
 
 # Add logcat support
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
-
-# Easy build
-ALLOW_MISSING_DEPENDENCIES := true

@@ -1,5 +1,12 @@
 LOCAL_PATH := device/razer/aura
 
+PRODUCT_PLATFORM := sdm845
+
+# Encryption
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
 # tzdata
 PRODUCT_PACKAGES += \
     tzdata_twrp \
@@ -26,6 +33,7 @@ PRODUCT_PACKAGES += \
 
 # Update engine
 PRODUCT_PACKAGES += \
+    update_engine_sideload \
     update_engine \
     update_verifier
 
