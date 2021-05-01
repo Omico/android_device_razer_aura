@@ -15,9 +15,9 @@ PRODUCT_MODEL := Phone 2
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="cheryl2" \
-    PRIVATE_BUILD_DESC="aura-user 9 P-MR1-RC003-RZR-190305 3110 release-keys"
+    PRIVATE_BUILD_DESC="aura-user 9 P-SMR6-RC001-RZR-201022 3201 release-keys"
 
-BUILD_FINGERPRINT := razer/cheryl2/aura:9/P-MR1-RC003-RZR-190305/3110:user/release-keys
+BUILD_FINGERPRINT := "razer/cheryl2/aura:9/P-SMR6-RC001-RZR-201022/3201:user/release-keys"
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
